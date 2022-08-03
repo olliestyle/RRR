@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RRR</title>
+</head>
+<body>
+    <input type="text" id="firstField">
+    <br>
+    <input type="button" value="Преобразовать" onclick="convert()">
+    <br>
+    <input type="text" id="secondField">
+</body>
+<script>
+    function convert() {
+        let s = document.getElementById("firstField").value;
+        let arr = s.split(';');
+        if (isValid(s)) {
+            document.getElementById("secondField").value = arr[1] + " " + arr[0].charAt(0) + ". - " + arr[2];
+        }
+    }
+
+    function isValid(str) {
+        let isValid = true;
+        let mustMatch = /^[А-ЯЁ][а-я]+;[А-ЯЁ][а-я]+;[А-ЯЁ][а-я]+$/;
+        if (!str.match(mustMatch)) {
+            alert("Поле должно быть заполнено в следующем виде \"Имя;Фамилия;Должность\" ")
+            isValid = false;
+        }
+        return isValid;
+    }
+</script>
+</html>
